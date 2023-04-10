@@ -1,0 +1,79 @@
+{
+  "name": "electron-demo-electron",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/electron/demo-electron/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "nx-electron:build",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/apps/electron/demo-electron",
+        "main": "apps/electron/demo-electron/src/main.ts",
+        "tsConfig": "apps/electron/demo-electron/tsconfig.app.json",
+        "assets": [
+          "apps/electron/demo-electron/src/assets"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/electron/demo-electron/src/environments/environment.ts",
+              "with": "apps/electron/demo-electron/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "nx-electron:execute",
+      "options": {
+        "buildTarget": "electron-demo-electron:build"
+      }
+    },
+    "package": {
+      "executor": "nx-electron:package",
+      "options": {
+        "name": "electron-demo-electron",
+        "frontendProject": "demo-electron-fe-react",
+        "outputPath": "dist/packages",
+        "prepackageOnly": true
+      }
+    },
+    "make": {
+      "executor": "nx-electron:make",
+      "options": {
+        "name": "electron-demo-electron",
+        "frontendProject": "demo-electron-fe-react",
+        "outputPath": "dist/executables"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "apps/electron/demo-electron/**/*.ts"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/apps/electron/demo-electron"
+      ],
+      "options": {
+        "jestConfig": "apps/electron/demo-electron/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

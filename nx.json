@@ -41,7 +41,16 @@
   "generators": {
     "@nrwl/react": {
       "application": {
+        "style": "none",
+        "linter": "eslint",
         "babel": true
+      },
+      "component": {
+        "style": "none"
+      },
+      "library": {
+        "style": "none",
+        "linter": "eslint"
       }
     },
     "@nrwl/next": {
@@ -51,5 +60,8 @@
       }
     }
   },
-  "defaultProject": "demo-nextjs"
+  "defaultProject": "demo-nextjs",
+  "cli": {
+    "defaultCollection": "nx-electron"
+  }
 }

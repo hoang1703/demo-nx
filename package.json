@@ -18,6 +18,8 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@angular-devkit/core": "^15.2.5",
+    "@angular-devkit/schematics": "^15.2.5",
     "@nrwl/cli": "14.8.8",
     "@nrwl/cypress": "14.8.8",
     "@nrwl/eslint-plugin-nx": "14.8.8",
@@ -35,6 +37,7 @@
     "@typescript-eslint/parser": "^5.36.1",
     "babel-jest": "28.1.1",
     "cypress": "^10.7.0",
+    "electron": "^22.1.0",
     "eslint": "~8.15.0",
     "eslint-config-next": "12.3.1",
     "eslint-config-prettier": "8.1.0",
@@ -43,9 +46,11 @@
     "eslint-plugin-jsx-a11y": "6.6.1",
     "eslint-plugin-react": "7.31.8",
     "eslint-plugin-react-hooks": "4.6.0",
+    "exitzero": "^1.0.1",
     "jest": "28.1.1",
     "jest-environment-jsdom": "28.1.1",
     "nx": "14.8.8",
+    "nx-electron": "^14.0.2",
     "prettier": "^2.6.2",
     "react-test-renderer": "18.2.0",
     "ts-jest": "28.0.5",
