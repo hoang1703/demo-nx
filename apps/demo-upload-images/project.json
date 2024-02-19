@@ -1,0 +1,84 @@
+{
+  "name": "demo-upload-images",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/demo-upload-images/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/demo-upload-images",
+        "index": "apps/demo-upload-images/src/index.html",
+        "baseHref": "/",
+        "main": "apps/demo-upload-images/src/main.tsx",
+        "polyfills": "apps/demo-upload-images/src/polyfills.ts",
+        "tsConfig": "apps/demo-upload-images/tsconfig.app.json",
+        "assets": [
+          "apps/demo-upload-images/src/favicon.ico",
+          "apps/demo-upload-images/src/assets"
+        ],
+        "styles": ["apps/demo-upload-images/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/demo-upload-images/src/environments/environment.ts",
+              "with": "apps/demo-upload-images/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/webpack:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "demo-upload-images:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "demo-upload-images:build:development"
+        },
+        "production": {
+          "buildTarget": "demo-upload-images:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/demo-upload-images/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/demo-upload-images"],
+      "options": {
+        "jestConfig": "apps/demo-upload-images/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
